@@ -9,6 +9,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import HomePage from "@/pages/HomePage";
 import LoginPage from "@/pages/LoginPage";
 import SignupPage from "@/pages/SignupPage";
+import FeaturesPage from "@/pages/FeaturesPage";
 import DashboardPage from "@/pages/DashboardPage";
 import DocumentsPage from "@/pages/DocumentsPage";
 import VoicePage from "@/pages/VoicePage";
@@ -26,6 +27,7 @@ const App = () => (
           <Route path="/" element={<HomePage />} />
           <Route path="/login" element={<LoginPage />} />
           <Route path="/signup" element={<SignupPage />} />
+          <Route path="/features" element={<FeaturesPage />} />
           
           {/* Dashboard Routes */}
           <Route path="/dashboard" element={<DashboardPage />} />
