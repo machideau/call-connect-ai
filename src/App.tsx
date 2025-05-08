@@ -10,6 +10,8 @@ import HomePage from "@/pages/HomePage";
 import LoginPage from "@/pages/LoginPage";
 import SignupPage from "@/pages/SignupPage";
 import FeaturesPage from "@/pages/FeaturesPage";
+import PricingPage from "@/pages/PricingPage";
+import ContactPage from "@/pages/ContactPage";
 import DashboardPage from "@/pages/DashboardPage";
 import DocumentsPage from "@/pages/DocumentsPage";
 import VoicePage from "@/pages/VoicePage";
@@ -28,6 +30,8 @@ const App = () => (
           <Route path="/login" element={<LoginPage />} />
           <Route path="/signup" element={<SignupPage />} />
           <Route path="/features" element={<FeaturesPage />} />
+          <Route path="/pricing" element={<PricingPage />} />
+          <Route path="/contact" element={<ContactPage />} />
           
           {/* Dashboard Routes */}
           <Route path="/dashboard" element={<DashboardPage />} />
