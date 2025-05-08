@@ -1,6 +1,6 @@
 
 import { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { useToast } from '@/hooks/use-toast';
@@ -11,6 +11,7 @@ const LoginForm = () => {
   const [password, setPassword] = useState('');
   const [isLoading, setIsLoading] = useState(false);
   const { toast } = useToast();
+  const navigate = useNavigate();
   
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -25,27 +26,39 @@ const LoginForm = () => {
       return;
     }
     
-    // Mock login (to be replaced with actual authentication)
+    // Set loading state
     setIsLoading(true);
     
     try {
-      // Simulate API call
+      // Check for demo credentials
+      if (email === 'admin@admin.com' && password === '1234') {
+        // Simulate API call
+        await new Promise(resolve => setTimeout(resolve, 1000));
+        
+        toast({
+          title: "Connexion réussie",
+          description: "Vous êtes maintenant connecté",
+        });
+        
+        // Navigate to dashboard
+        navigate('/dashboard/assistant');
+        return;
+      }
+      
+      // Handle other login attempts (mock for now)
       await new Promise(resolve => setTimeout(resolve, 1000));
       
-      console.log("Login attempt with:", { email, password });
-      
       toast({
-        title: "Connexion réussie",
-        description: "Vous êtes maintenant connecté",
+        title: "Erreur de connexion",
+        description: "Email ou mot de passe incorrect",
+        variant: "destructive",
       });
-      
-      // Here we would navigate to dashboard
       
     } catch (error) {
       console.error("Login error:", error);
       toast({
         title: "Erreur de connexion",
-        description: "Veuillez vérifier vos identifiants",
+        description: "Une erreur s'est produite lors de la connexion",
         variant: "destructive",
       });
     } finally {
@@ -145,6 +158,11 @@ const LoginForm = () => {
             Créer un compte
           </Link>
         </p>
+      </div>
+      
+      {/* Debug info - can be removed in production */}
+      <div className="mt-8 pt-4 border-t border-gray-200 text-xs text-gray-500">
+        <p className="text-center">Pour la démo: admin@admin.com / 1234</p>
       </div>
     </div>
   );

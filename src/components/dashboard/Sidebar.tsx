@@ -8,8 +8,9 @@ import {
   Mail, 
   Menu,
   Search, 
-  Settings, 
-  User 
+  Settings,
+  User,
+  MessageCircle
 } from 'lucide-react';
 import { cn } from '@/lib/utils';
 
@@ -47,6 +48,7 @@ const Sidebar = () => {
     { icon: <Home className="h-5 w-5" />, label: 'Tableau de bord', to: '/dashboard' },
     { icon: <Calendar className="h-5 w-5" />, label: 'Documents', to: '/dashboard/documents' },
     { icon: <User className="h-5 w-5" />, label: 'Configuration Vocale', to: '/dashboard/voice' },
+    { icon: <MessageCircle className="h-5 w-5" />, label: 'Configuration Assistant', to: '/dashboard/assistant' },
     { icon: <Mail className="h-5 w-5" />, label: 'Historique des Appels', to: '/dashboard/calls' },
     { icon: <Search className="h-5 w-5" />, label: 'Conversations', to: '/dashboard/conversations' },
     { icon: <Settings className="h-5 w-5" />, label: 'Paramètres', to: '/dashboard/settings' },
