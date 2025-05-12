@@ -2,6 +2,7 @@
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Switch } from '@/components/ui/switch';
+import { Label } from '@/components/ui/label';
 import { LogOut, Clock } from 'lucide-react';
 import {
   Card,
@@ -29,18 +30,18 @@ const SecurityTab = ({ loading, onSave }: SecurityTabProps) => {
         </CardHeader>
         <CardContent className="space-y-4">
           <div className="space-y-2">
-            <label className="text-sm font-medium">Mot de passe actuel</label>
-            <Input type="password" />
+            <Label htmlFor="current-password">Mot de passe actuel</Label>
+            <Input id="current-password" type="password" />
           </div>
           
           <div className="space-y-2">
-            <label className="text-sm font-medium">Nouveau mot de passe</label>
-            <Input type="password" />
+            <Label htmlFor="new-password">Nouveau mot de passe</Label>
+            <Input id="new-password" type="password" />
           </div>
           
           <div className="space-y-2">
-            <label className="text-sm font-medium">Confirmer le nouveau mot de passe</label>
-            <Input type="password" />
+            <Label htmlFor="confirm-password">Confirmer le nouveau mot de passe</Label>
+            <Input id="confirm-password" type="password" />
           </div>
         </CardContent>
         <CardFooter>

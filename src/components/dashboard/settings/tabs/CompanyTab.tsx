@@ -2,7 +2,7 @@
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
-import { FormLabel } from '@/components/ui/form';
+import { Label } from '@/components/ui/label';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { Upload } from 'lucide-react';
 import {
@@ -50,14 +50,14 @@ const CompanyTab = ({ loading, onSave }: CompanyTabProps) => {
           
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4 flex-1">
             <div className="space-y-2">
-              <FormLabel>Nom de l'entreprise</FormLabel>
-              <Input defaultValue="Entreprise ABC" />
+              <Label htmlFor="company-name">Nom de l'entreprise</Label>
+              <Input id="company-name" defaultValue="Entreprise ABC" />
             </div>
             
             <div className="space-y-2">
-              <FormLabel>Secteur d'activité</FormLabel>
+              <Label htmlFor="industry">Secteur d'activité</Label>
               <Select defaultValue="tech">
-                <SelectTrigger>
+                <SelectTrigger id="industry">
                   <SelectValue placeholder="Sélectionner un secteur" />
                 </SelectTrigger>
                 <SelectContent>
@@ -72,14 +72,14 @@ const CompanyTab = ({ loading, onSave }: CompanyTabProps) => {
             </div>
             
             <div className="space-y-2">
-              <FormLabel>Site web</FormLabel>
-              <Input defaultValue="https://www.exemple.com" />
+              <Label htmlFor="website">Site web</Label>
+              <Input id="website" defaultValue="https://www.exemple.com" />
             </div>
             
             <div className="space-y-2">
-              <FormLabel>Taille de l'entreprise</FormLabel>
+              <Label htmlFor="company-size">Taille de l'entreprise</Label>
               <Select defaultValue="small">
-                <SelectTrigger>
+                <SelectTrigger id="company-size">
                   <SelectValue placeholder="Sélectionner une taille" />
                 </SelectTrigger>
                 <SelectContent>
@@ -92,8 +92,9 @@ const CompanyTab = ({ loading, onSave }: CompanyTabProps) => {
             </div>
             
             <div className="col-span-2 space-y-2">
-              <FormLabel>Description de l'entreprise</FormLabel>
+              <Label htmlFor="company-desc">Description de l'entreprise</Label>
               <Textarea 
+                id="company-desc"
                 defaultValue="Entreprise spécialisée dans les solutions innovantes de gestion de la relation client."
                 rows={4}
               />

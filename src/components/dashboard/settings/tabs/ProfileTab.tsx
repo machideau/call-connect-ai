@@ -1,7 +1,7 @@
 
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
-import { FormLabel } from '@/components/ui/form';
+import { Label } from '@/components/ui/label';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { Upload } from 'lucide-react';
 import {
@@ -49,34 +49,34 @@ const ProfileTab = ({ loading, onSave }: ProfileTabProps) => {
           
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4 flex-1">
             <div className="space-y-2">
-              <FormLabel>Prénom</FormLabel>
-              <Input defaultValue="Jean" />
+              <Label htmlFor="firstname">Prénom</Label>
+              <Input id="firstname" defaultValue="Jean" />
             </div>
             
             <div className="space-y-2">
-              <FormLabel>Nom</FormLabel>
-              <Input defaultValue="Dupont" />
+              <Label htmlFor="lastname">Nom</Label>
+              <Input id="lastname" defaultValue="Dupont" />
             </div>
             
             <div className="space-y-2">
-              <FormLabel>Email</FormLabel>
-              <Input defaultValue="jean.dupont@example.com" />
+              <Label htmlFor="email">Email</Label>
+              <Input id="email" defaultValue="jean.dupont@example.com" />
             </div>
             
             <div className="space-y-2">
-              <FormLabel>Téléphone</FormLabel>
-              <Input defaultValue="+33 6 12 34 56 78" />
+              <Label htmlFor="phone">Téléphone</Label>
+              <Input id="phone" defaultValue="+33 6 12 34 56 78" />
             </div>
             
             <div className="space-y-2">
-              <FormLabel>Poste</FormLabel>
-              <Input defaultValue="Directeur Commercial" />
+              <Label htmlFor="position">Poste</Label>
+              <Input id="position" defaultValue="Directeur Commercial" />
             </div>
             
             <div className="space-y-2">
-              <FormLabel>Langue</FormLabel>
+              <Label htmlFor="language">Langue</Label>
               <Select defaultValue="fr">
-                <SelectTrigger>
+                <SelectTrigger id="language">
                   <SelectValue placeholder="Sélectionner une langue" />
                 </SelectTrigger>
                 <SelectContent>
