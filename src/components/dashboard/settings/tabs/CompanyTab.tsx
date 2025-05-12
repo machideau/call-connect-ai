@@ -1,4 +1,5 @@
 
+import { useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
@@ -20,6 +21,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from '@/components/ui/select';
+import { useToast } from '@/hooks/use-toast';
 
 interface CompanyTabProps {
   loading: boolean;
@@ -27,6 +29,46 @@ interface CompanyTabProps {
 }
 
 const CompanyTab = ({ loading, onSave }: CompanyTabProps) => {
+  const [logoSrc, setLogoSrc] = useState<string>('/placeholder.svg');
+  const { toast } = useToast();
+
+  const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    if (!file) return;
+    
+    // Validate file type
+    if (!file.type.startsWith('image/')) {
+      toast({
+        title: "Type de fichier non valide",
+        description: "Veuillez sélectionner une image",
+        variant: "destructive",
+      });
+      return;
+    }
+    
+    // Validate file size (max 5MB)
+    if (file.size > 5 * 1024 * 1024) {
+      toast({
+        title: "Fichier trop volumineux",
+        description: "La taille maximum est de 5Mo",
+        variant: "destructive",
+      });
+      return;
+    }
+    
+    const reader = new FileReader();
+    reader.onload = (event) => {
+      if (event.target?.result) {
+        setLogoSrc(event.target.result as string);
+        toast({
+          title: "Logo téléchargé",
+          description: "Le logo de votre entreprise a été mis à jour",
+        });
+      }
+    };
+    reader.readAsDataURL(file);
+  };
+
   return (
     <Card>
       <CardHeader>
@@ -39,13 +81,25 @@ const CompanyTab = ({ loading, onSave }: CompanyTabProps) => {
         <div className="flex flex-col md:flex-row gap-8 items-start">
           <div className="flex flex-col items-center gap-3">
             <Avatar className="h-24 w-24">
-              <AvatarImage src="/placeholder.svg" alt="Logo entreprise" />
+              <AvatarImage src={logoSrc} alt="Logo entreprise" />
               <AvatarFallback>ABC</AvatarFallback>
             </Avatar>
-            <Button variant="outline" size="sm" className="w-full">
-              <Upload className="h-4 w-4 mr-2" />
-              Logo
-            </Button>
+            <Input 
+              id="logo-upload" 
+              type="file" 
+              accept="image/*" 
+              onChange={handleFileChange} 
+              className="hidden" 
+              disabled={loading}
+            />
+            <label htmlFor="logo-upload">
+              <Button variant="outline" size="sm" className="w-full" asChild>
+                <div>
+                  <Upload className="h-4 w-4 mr-2" />
+                  Logo
+                </div>
+              </Button>
+            </label>
           </div>
           
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4 flex-1">

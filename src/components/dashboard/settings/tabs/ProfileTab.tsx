@@ -1,4 +1,5 @@
 
+import { useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
@@ -19,6 +20,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from '@/components/ui/select';
+import { useToast } from '@/hooks/use-toast';
 
 interface ProfileTabProps {
   loading: boolean;
@@ -26,6 +28,46 @@ interface ProfileTabProps {
 }
 
 const ProfileTab = ({ loading, onSave }: ProfileTabProps) => {
+  const [avatarSrc, setAvatarSrc] = useState<string>('/placeholder.svg');
+  const { toast } = useToast();
+
+  const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    if (!file) return;
+    
+    // Validate file type
+    if (!file.type.startsWith('image/')) {
+      toast({
+        title: "Type de fichier non valide",
+        description: "Veuillez sélectionner une image",
+        variant: "destructive",
+      });
+      return;
+    }
+    
+    // Validate file size (max 5MB)
+    if (file.size > 5 * 1024 * 1024) {
+      toast({
+        title: "Fichier trop volumineux",
+        description: "La taille maximum est de 5Mo",
+        variant: "destructive",
+      });
+      return;
+    }
+    
+    const reader = new FileReader();
+    reader.onload = (event) => {
+      if (event.target?.result) {
+        setAvatarSrc(event.target.result as string);
+        toast({
+          title: "Photo téléchargée",
+          description: "Votre photo de profil a été mise à jour",
+        });
+      }
+    };
+    reader.readAsDataURL(file);
+  };
+
   return (
     <Card>
       <CardHeader>
@@ -38,13 +80,25 @@ const ProfileTab = ({ loading, onSave }: ProfileTabProps) => {
         <div className="flex flex-col md:flex-row gap-8 items-start">
           <div className="flex flex-col items-center gap-3">
             <Avatar className="h-24 w-24">
-              <AvatarImage src="/placeholder.svg" alt="Photo de profil" />
+              <AvatarImage src={avatarSrc} alt="Photo de profil" />
               <AvatarFallback>JD</AvatarFallback>
             </Avatar>
-            <Button variant="outline" size="sm" className="w-full">
-              <Upload className="h-4 w-4 mr-2" />
-              Changer
-            </Button>
+            <Input 
+              id="profile-upload" 
+              type="file" 
+              accept="image/*" 
+              onChange={handleFileChange} 
+              className="hidden" 
+              disabled={loading}
+            />
+            <label htmlFor="profile-upload">
+              <Button variant="outline" size="sm" className="w-full" asChild>
+                <div>
+                  <Upload className="h-4 w-4 mr-2" />
+                  Changer
+                </div>
+              </Button>
+            </label>
           </div>
           
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4 flex-1">
