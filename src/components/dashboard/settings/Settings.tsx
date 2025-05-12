@@ -13,7 +13,11 @@ import SecurityTab from './tabs/SecurityTab';
 import NotificationsTab from './tabs/NotificationsTab';
 import BillingTab from './tabs/BillingTab';
 
-const Settings = () => {
+interface SettingsProps {
+  defaultTab?: string;
+}
+
+const Settings = ({ defaultTab = 'profile' }: SettingsProps) => {
   const { toast } = useToast();
   const [loading, setLoading] = useState(false);
 
@@ -31,7 +35,7 @@ const Settings = () => {
   };
 
   return (
-    <Tabs defaultValue="profile" className="space-y-6">
+    <Tabs defaultValue={defaultTab} className="space-y-6">
       <TabsList className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 w-full">
         <TabsTrigger value="profile">Profil</TabsTrigger>
         <TabsTrigger value="company">Entreprise</TabsTrigger>

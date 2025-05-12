@@ -19,6 +19,7 @@ import AssistantConfigPage from "@/pages/AssistantConfigPage";
 import CallsHistoryPage from "@/pages/CallsHistoryPage";
 import ConversationsPage from "@/pages/ConversationsPage";
 import SettingsPage from "@/pages/SettingsPage";
+import NotificationsPage from "@/pages/NotificationsPage";
 import NotFound from "@/pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -45,7 +46,7 @@ const App = () => (
           <Route path="/dashboard/calls" element={<CallsHistoryPage />} />
           <Route path="/dashboard/conversations" element={<ConversationsPage />} />
           <Route path="/dashboard/settings" element={<SettingsPage />} />
-          <Route path="/dashboard/notifications" element={<SettingsPage />} />
+          <Route path="/dashboard/notifications" element={<NotificationsPage />} />
           
           {/* Catch-all route */}
           <Route path="*" element={<NotFound />} />
