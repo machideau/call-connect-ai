@@ -16,6 +16,9 @@ import DashboardPage from "@/pages/DashboardPage";
 import DocumentsPage from "@/pages/DocumentsPage";
 import VoicePage from "@/pages/VoicePage";
 import AssistantConfigPage from "@/pages/AssistantConfigPage";
+import CallsHistoryPage from "@/pages/CallsHistoryPage";
+import ConversationsPage from "@/pages/ConversationsPage";
+import SettingsPage from "@/pages/SettingsPage";
 import NotFound from "@/pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -39,6 +42,9 @@ const App = () => (
           <Route path="/dashboard/documents" element={<DocumentsPage />} />
           <Route path="/dashboard/voice" element={<VoicePage />} />
           <Route path="/dashboard/assistant" element={<AssistantConfigPage />} />
+          <Route path="/dashboard/calls" element={<CallsHistoryPage />} />
+          <Route path="/dashboard/conversations" element={<ConversationsPage />} />
+          <Route path="/dashboard/settings" element={<SettingsPage />} />
           
           {/* Catch-all route */}
           <Route path="*" element={<NotFound />} />
