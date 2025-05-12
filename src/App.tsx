@@ -45,6 +45,7 @@ const App = () => (
           <Route path="/dashboard/calls" element={<CallsHistoryPage />} />
           <Route path="/dashboard/conversations" element={<ConversationsPage />} />
           <Route path="/dashboard/settings" element={<SettingsPage />} />
+          <Route path="/dashboard/notifications" element={<SettingsPage />} />
           
           {/* Catch-all route */}
           <Route path="*" element={<NotFound />} />
