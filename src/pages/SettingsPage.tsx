@@ -1,5 +1,4 @@
 
-import { useEffect } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import Sidebar from '@/components/dashboard/Sidebar';
 import Header from '@/components/dashboard/Header';
