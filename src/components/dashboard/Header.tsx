@@ -12,16 +12,19 @@ import {
 } from '@/components/ui/dropdown-menu';
 import { Bell, User } from 'lucide-react';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
+import { ThemeToggle } from '@/components/theme/ThemeToggle';
 
 const Header = ({ title }: { title: string }) => {
   const [unreadNotifications, setUnreadNotifications] = useState(3);
   
   return (
-    <header className="bg-white border-b border-gray-200 py-4">
+    <header className="bg-background border-b border-border py-4 transition-colors duration-300">
       <div className="container flex items-center justify-between">
         <h1 className="text-2xl font-bold">{title}</h1>
         
         <div className="flex items-center space-x-4">
+          <ThemeToggle />
+          
           <DropdownMenu>
             <DropdownMenuTrigger asChild>
               <Button variant="ghost" size="icon" className="relative rounded-full">
@@ -40,22 +43,22 @@ const Header = ({ title }: { title: string }) => {
                 <DropdownMenuItem className="py-3 cursor-pointer">
                   <div>
                     <p className="font-medium">Essai gratuit</p>
-                    <p className="text-sm text-gray-500">Il vous reste 2 jours d'essai gratuit</p>
-                    <p className="text-xs text-gray-400 mt-1">Il y a 3 heures</p>
+                    <p className="text-sm text-muted-foreground">Il vous reste 2 jours d'essai gratuit</p>
+                    <p className="text-xs text-muted-foreground mt-1">Il y a 3 heures</p>
                   </div>
                 </DropdownMenuItem>
                 <DropdownMenuItem className="py-3 cursor-pointer">
                   <div>
                     <p className="font-medium">Nouveau document</p>
-                    <p className="text-sm text-gray-500">Votre document a été traité avec succès</p>
-                    <p className="text-xs text-gray-400 mt-1">Hier</p>
+                    <p className="text-sm text-muted-foreground">Votre document a été traité avec succès</p>
+                    <p className="text-xs text-muted-foreground mt-1">Hier</p>
                   </div>
                 </DropdownMenuItem>
                 <DropdownMenuItem className="py-3 cursor-pointer">
                   <div>
                     <p className="font-medium">Appel manqué</p>
-                    <p className="text-sm text-gray-500">Un appel a été manqué de +33612345678</p>
-                    <p className="text-xs text-gray-400 mt-1">Il y a 2 jours</p>
+                    <p className="text-sm text-muted-foreground">Un appel a été manqué de +33612345678</p>
+                    <p className="text-xs text-muted-foreground mt-1">Il y a 2 jours</p>
                   </div>
                 </DropdownMenuItem>
               </div>
@@ -77,7 +80,7 @@ const Header = ({ title }: { title: string }) => {
                 </Avatar>
                 <div className="hidden md:block text-left">
                   <p className="text-sm font-medium">Jean Dupont</p>
-                  <p className="text-xs text-gray-500">Entreprise ABC</p>
+                  <p className="text-xs text-muted-foreground">Entreprise ABC</p>
                 </div>
               </Button>
             </DropdownMenuTrigger>
