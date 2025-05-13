@@ -1,8 +1,7 @@
-
 import { useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
-import { Search, CreditCard, Calendar, Paypal, Wallet } from 'lucide-react';
+import { Search, CreditCard, Calendar, Wallet } from 'lucide-react';
 import {
   Card,
   CardContent,
@@ -55,7 +54,7 @@ import { Pagination, PaginationContent, PaginationItem, PaginationLink, Paginati
 const paymentMethods = [
   { id: 'visa', name: 'Visa', icon: <CreditCard className="h-5 w-5" /> },
   { id: 'mastercard', name: 'MasterCard', icon: <CreditCard className="h-5 w-5" /> },
-  { id: 'paypal', name: 'PayPal', icon: <Paypal className="h-5 w-5" /> },
+  { id: 'paypal', name: 'PayPal', icon: <Wallet className="h-5 w-5" /> },
   { id: 'stripe', name: 'Stripe', icon: <CreditCard className="h-5 w-5" /> },
   { id: 'mtn', name: 'MTN Mobile Money', icon: <Wallet className="h-5 w-5" /> },
   { id: 'moov', name: 'Moov Money', icon: <Wallet className="h-5 w-5" /> },
